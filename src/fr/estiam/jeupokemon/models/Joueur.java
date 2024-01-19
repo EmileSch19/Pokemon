@@ -17,12 +17,15 @@ public class Joueur {
         this.pokemons = new ArrayList<>();
     }
 
-    public void choisirPokemon(List<Pokemon> listePokemons) {
+    public void choisirPokemon(List<Pokemon> pokemons) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Liste des Pokémons disponibles:");
-        for (int i = 0; i < listePokemons.size(); i++) {
-            System.out.println((i + 1) + ". " + listePokemons.get(i).getNom());
-        }
+        List<Pokemon> listePokemons = new ArrayList<>();
+        listePokemons.add(new Pokemon("Pikachu", 500, "Électrik", null, 70, 25, 50, 60, 40, 50));
+        listePokemons.add(new Pokemon("Bulbizarre", 450, "Plante", "Poison", 60, 20, 45, 50, 40, 55));
+        listePokemons.add(new Pokemon("Salamèche", 400, "Feu", null, 55, 18, 50, 40, 45, 65));
+        listePokemons.add(new Pokemon("Carapuce", 470, "Eau", null, 65, 22, 40, 50, 65, 35));
+        listePokemons.add(new Pokemon("Rondoudou", 520, "Fée", "Normal", 80, 30, 30, 50, 30, 35));
+        listePokemons.add(new Pokemon("Racaillou", 480, "Roche", "Sol", 70, 28, 40, 30, 60, 25));
 
         for (int i = 0; i < 3; i++) {
             int choix = 0;
@@ -36,7 +39,7 @@ public class Joueur {
 
             if (choix < 1 || choix > listePokemons.size()) {
                 System.out.println("Numéro invalide. Veuillez choisir un numéro de Pokémon valide.");
-                i--; // Réduire i pour que l'utilisateur puisse saisir à nouveau le numéro correct.
+                i--;
                 continue;
             }
 
@@ -45,6 +48,14 @@ public class Joueur {
             System.out.println("Vous avez choisi " + pokemonChoisi.getNom() + " !");
         }
     }
+
+    public void afficherPokemonsChoisis() {
+        System.out.println("Liste des Pokémons choisis par " + nom + ":");
+        for (Pokemon pokemon : pokemons) {
+            pokemon.afficher();
+        }
+    }
+
 
 
     public void ajouterPokemon(Pokemon pokemon) {
@@ -64,8 +75,15 @@ public class Joueur {
     }
 
     public Pokemon recupererPokemon(int numero) {
-        return pokemons.get(numero - 1);
+        if (numero >= 1 && numero <= pokemons.size()) {
+            return pokemons.get(numero - 1);
+        }
+        else {
+            System.out.println("Numéro de Pokémon invalide. Veuillez choisir un numéro de Pokémon valide.");
+            return null;
+        }
     }
+
 
     public void afficherPokemons() {
         System.out.println("Liste des Pokémons de " + nom + ":");
@@ -82,10 +100,12 @@ public class Joueur {
     }
 
     public int getManchesGagnees() {
+
         return 0;
     }
 
     public boolean getNom() {
+
         return false;
     }
 

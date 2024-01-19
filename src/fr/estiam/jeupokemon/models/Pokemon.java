@@ -99,7 +99,25 @@ public class Pokemon {
         return 0;
     }
 
-    // Ajoutez d'autres getters pour les autres attributs du Pokémon selon vos besoins
-    // ...
+
+    public String getType() {
+        return null;
+    }
+
+    public double getDefense() {
+        return 0;
+    }
+
+    public double getAttaque() {
+        return 0;
+    }
+
+    public double getAttaqueSpeciale() {
+        return 0;
+    }
+
+    public double getDefenseSpeciale() {
+        return 0;
+    }
 }
 

@@ -32,6 +32,12 @@ public class Jeu {
             Pokemon pokemon1 = joueur1.recupererPokemon(round);
             Pokemon pokemon2 = joueur2.recupererPokemon(round);
 
+            // Vérifiez si les Pokémon ne sont pas null avant de commencer la boucle
+            if (pokemon1 == null || pokemon2 == null) {
+                System.out.println("Erreur : Pokémon null détecté.");
+                break;
+            }
+
             while (!pokemon1.estKo() && !pokemon2.estKo()) {
                 System.out.println("\nTour du Joueur 1 (" + joueur1.getNom() + ")");
                 Attaque attaque1 = joueur1.choisirAttaque(pokemon1);
@@ -67,52 +73,18 @@ public class Jeu {
     }
 
     private List<Pokemon> choisirPokemons() {
-        Pokemon pikachu = new Pokemon("Pikachu", 500, "Électrik", null, 70, 25, 50, 60, 40, 50);
-        pikachu.ajouterAttaque(new Attaque("Éclair", "Électrik", "physique", 90, 40, 20));
-        pikachu.ajouterAttaque(new Attaque("Queue de fer", "Acier", "physique", 85, 60, 15));
-
-        Pokemon bulbizarre = new Pokemon("Bulbizarre", 450, "Plante", "Poison", 60, 20, 45, 50, 40, 55);
-        bulbizarre.ajouterAttaque(new Attaque("Fouet lianes", "Plante", "physique", 95, 35, 25));
-        bulbizarre.ajouterAttaque(new Attaque("Charge", "Normal", "physique", 100, 30, 15));
-
-        Pokemon salamèche = new Pokemon("Salamèche", 400, "Feu", null, 55, 18, 50, 40, 45, 65);
-        salamèche.ajouterAttaque(new Attaque("Lance-Flammes", "Feu", "spéciale", 85, 55, 20));
-        salamèche.ajouterAttaque(new Attaque("Griffe", "Normal", "physique", 90, 40, 25));
-
-        Pokemon carapuce = new Pokemon("Carapuce", 470, "Eau", null, 65, 22, 40, 50, 65, 35);
-        carapuce.ajouterAttaque(new Attaque("Pistolet à O", "Eau", "spéciale", 95, 35, 20));
-        carapuce.ajouterAttaque(new Attaque("Morsure", "Ténèbres", "physique", 90, 40, 25));
-
-        Pokemon rondoudou = new Pokemon("Rondoudou", 520, "Fée", "Normal", 80, 30, 30, 50, 30, 35);
-        rondoudou.ajouterAttaque(new Attaque("Chant Canon", "Normal", "spéciale", 75, 45, 15));
-        rondoudou.ajouterAttaque(new Attaque("Métronome", "Normal", "spéciale", 80, 40, 20));
-
-        Pokemon racaillou = new Pokemon("Racaillou", 480, "Roche", "Sol", 70, 28, 40, 30, 60, 25);
-        racaillou.ajouterAttaque(new Attaque("Éboulement", "Roche", "physique", 85, 50, 15));
-        racaillou.ajouterAttaque(new Attaque("Séisme", "Sol", "physique", 90, 55, 20));
-
-        Pokemon psykokwak = new Pokemon("Psykokwak", 510, "Eau", null, 75, 32, 45, 50, 35, 55);
-        psykokwak.ajouterAttaque(new Attaque("Hydrocanon", "Eau", "spéciale", 80, 60, 10));
-        psykokwak.ajouterAttaque(new Attaque("Psyko", "Psy", "spéciale", 90, 55, 20));
-
-        Pokemon machoc = new Pokemon("Machoc", 490, "Combat", null, 65, 28, 80, 30, 35, 45);
-        machoc.ajouterAttaque(new Attaque("Dynamopoing", "Combat", "physique", 75, 55, 15));
-        machoc.ajouterAttaque(new Attaque("Balayette", "Combat", "physique", 85, 40, 20));
-
-        Pokemon abra = new Pokemon("Abra", 440, "Psy", null, 40, 15, 20, 105, 15, 90);
-        abra.ajouterAttaque(new Attaque("Choc Mental", "Psy", "spéciale", 90, 30, 25));
-        abra.ajouterAttaque(new Attaque("Téléport", "Psy", "spéciale", 100, 10, 40));
-
-        Pokemon osselait = new Pokemon("Osselait", 470, "Sol", null, 55, 20, 50, 40, 65, 35);
-        osselait.ajouterAttaque(new Attaque("Séisme", "Sol", "physique", 90, 55, 20));
-        osselait.ajouterAttaque(new Attaque("Fracass'Tête", "Normal", "physique", 80, 45, 25));
-
+        // Vous devez implémenter la logique pour choisir les Pokémons ici.
+        // Retournez une liste de Pokémons.
         return new ArrayList<>();
     }
 
     private void afficherEtatCombat(Pokemon pokemon1, Pokemon pokemon2) {
-        // Vous pouvez implémenter cette méthode pour afficher l'état actuel du combat.
-        // Affichez les points de vie restants, les statuts, etc.
+        // Implémentez la logique pour afficher l'état du combat entre les deux Pokémon.
+        // Vous pouvez afficher les PV restants, les attaques utilisées, etc.
     }
 
+    public static void main(String[] args) {
+        Jeu jeu = new Jeu();
+        jeu.jouer();
+    }
 }
