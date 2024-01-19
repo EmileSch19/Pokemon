@@ -65,4 +65,7 @@ public class Joueur {
         System.out.println("Argent: " + argent);
         afficherPokemons();
     }
+
+
+
 }
