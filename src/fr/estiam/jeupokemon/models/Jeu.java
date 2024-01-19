@@ -66,7 +66,6 @@ public class Jeu {
         System.out.println(gagnant.getNom() + " remporte la partie!");
     }
 
-<<<<<<< HEAD
     private List<Pokemon> choisirPokemons() {
         Pokemon pikachu = new Pokemon("Pikachu", 500, "Électrik", null, 70, 25, 50, 60, 40, 50);
         pikachu.ajouterAttaque(new Attaque("Éclair", "Électrik", "physique", 90, 40, 20));
@@ -116,8 +115,4 @@ public class Jeu {
         // Affichez les points de vie restants, les statuts, etc.
     }
 
-
-
-=======
->>>>>>> 303a55267ddde604f204116aff89b16fcc9d53e3
 }
