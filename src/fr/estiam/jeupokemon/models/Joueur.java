@@ -81,6 +81,7 @@ public class Joueur {
         afficherPokemons();
     }
 
+<<<<<<< HEAD
     public int getManchesGagnees() {
         return 0;
     }
@@ -94,4 +95,8 @@ public class Joueur {
 
     public void gagnerManche() {
     }
+=======
+
+
+>>>>>>> 303a55267ddde604f204116aff89b16fcc9d53e3
 }
