@@ -2,13 +2,14 @@ package fr.estiam.jeupokemon.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Pokemon {
     private String nom;
     private double prix;
     private String type1;
     private String type2;
-    private int pointsDeVie;
+    private int pv;
     private int niveau;
     private int attaque;
     private int attaqueSpeciale;
@@ -24,7 +25,7 @@ public class Pokemon {
         this.prix = prix;
         this.type1 = type1;
         this.type2 = type2;
-        this.pointsDeVie = pointsDeVie;
+        this.pv = pointsDeVie;
         this.niveau = niveau;
         this.attaque = attaque;
         this.attaqueSpeciale = attaqueSpeciale;
@@ -32,92 +33,121 @@ public class Pokemon {
         this.defenseSpeciale = defenseSpeciale;
         this.vitesse = vitesse;
         this.attaques = new ArrayList<>();
+        ListeAttaques();
     }
 
-    // Méthode pour ajouter une attaque
-    public void ajouterAttaque(Attaque attaque) {
-        attaques.add(attaque);
-    }
+    private void ListeAttaques() {
+        attaques = new ArrayList<>();
 
-    // Méthode pour attaquer un autre Pokémon
-    /*public void attaquer(Pokemon cible, Attaque attaqueUtilisee) {
-        int degats = attaqueUtilisee.calculerDegats(this, cible);
-        cible.subirDegats(degats);
-    }*/
-
-    // Méthode pour déterminer si le Pokémon est KO
-    public boolean estKo() {
-        return pointsDeVie <= 0;
-    }
-
-    // Méthode pour afficher les attaques du Pokémon
-    public void afficherAttaques() {
-        System.out.println("Liste des attaques de " + nom + ":");
-        for (Attaque attaque : attaques) {
-            attaque.afficher();
+        // Ajoutez les attaques pour Pikachu
+        if (nom.equals("Pikachu")) {
+            attaques.add(new Attaque("Éclair", "Électrik", "physique", 90, 40, 20));
+            attaques.add(new Attaque("Queue de fer", "Acier", "physique", 85, 60, 15));
+        } else if (nom.equals("Bulbizarre")) {
+            attaques.add(new Attaque("Fouet lianes", "Plante", "physique", 95, 35, 25));
+            attaques.add(new Attaque("Charge", "Normal", "physique", 100, 30, 15));
+        } else if (nom.equals("Salamèche")) {
+            attaques.add(new Attaque("Lance-Flammes", "Feu", "spéciale", 85, 55, 20));
+            attaques.add(new Attaque("Griffe", "Normal", "physique", 90, 40, 25));
+        } else if (nom.equals("Carapuce")) {
+            attaques.add(new Attaque("Pistolet à O", "Eau", "spéciale", 95, 35, 20));
+            attaques.add(new Attaque("Morsure", "Ténèbres", "physique", 90, 40, 25));
+        } else if (nom.equals("Rondoudou")) {
+            attaques.add(new Attaque("Chant Canon", "Normal", "spéciale", 75, 45, 15));
+            attaques.add(new Attaque("Métronome", "Normal", "spéciale", 80, 40, 20));
+        } else if (nom.equals("Racaillou")) {
+            attaques.add(new Attaque("Éboulement", "Roche", "physique", 85, 50, 15));
+            attaques.add(new Attaque("Séisme", "Sol", "physique", 90, 55, 20));
         }
-    }
 
-    // Méthode pour afficher les informations du Pokémon
-    public void afficher() {
-        System.out.println("Nom: " + nom);
-        System.out.println("Type(s): " + type1 + ", " + type2);
-        System.out.println("PV: " + pointsDeVie);
-        System.out.println("Niveau: " + niveau);
-        System.out.println("Attaque: " + attaque);
-        System.out.println("Attaque Spéciale: " + attaqueSpeciale);
-        System.out.println("Défense: " + defense);
-        System.out.println("Défense Spéciale: " + defenseSpeciale);
-        System.out.println("Vitesse: " + vitesse);
-        afficherAttaques();
-    }
 
-    // Méthode pour subir des dégâts
-    public void subirDegats(int degats) {
-        pointsDeVie -= degats;
-        if (pointsDeVie < 0) {
-            pointsDeVie = 0;
-        }
     }
-
-    // Getter pour le nom du Pokémon
+//Getter
     public String getNom() {
         return nom;
     }
 
-    // Getter pour les attaques du Pokémon
+    public double getPrix() {
+        return prix;
+    }
+
+    public String getType1() {
+        return type1;
+    }
+
+    public String getType2() {
+        return type2;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public int getAttaque() {
+        return attaque;
+    }
+
+    public int getAttaqueSpeciale() {
+        return attaqueSpeciale;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getDefenseSpeciale() {
+        return defenseSpeciale;
+    }
+
+    public int getVitesse() {
+        return vitesse;
+    }
+
     public List<Attaque> getAttaques() {
         return attaques;
     }
 
-    // Getter pour les points de vie du Pokémon
-    public int getPv() {
-        return pointsDeVie;
-    }
-
-    public int getVitesse() {
-        return 0;
-    }
-
-
     public String getType() {
-        return null;
+        return type1;
     }
 
-    public double getDefense() {
-        return 0;
+    public void ajouterAttaque(Attaque attaque) {
+
+    } 
+   
+
+    public void afficherAttaques() {
+        System.out.println("Liste des attaques de " + nom + ":");
+        for (Attaque attaque : attaques) {
+            System.out.println("Nom: " + attaque.getNom());
+            System.out.println("Type: " + attaque.getType());
+            System.out.println("Catégorie: " + attaque.getCategorie());
+            System.out.println("Précision: " + attaque.getPrecision());
+            System.out.println("Puissance: " + attaque.getPuissance());
+            System.out.println("PP: " + attaque.getPp());
+            System.out.println();
+        }
     }
 
-    public double getAttaque() {
-        return 0;
+    public boolean estKo() {
+        if (pv <= 0) {
+            pv = 0;
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
-    public double getAttaqueSpeciale() {
-        return 0;
+
+    // Méthode pour subir des dégâts
+    public void subirDegats ( int degats){
+        pv -= degats;
+
     }
 
-    public double getDefenseSpeciale() {
-        return 0;
+    public int getPv() {
+        return pv;
     }
 }
 
